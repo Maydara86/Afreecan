@@ -9,8 +9,8 @@
             <a class="nav-link" href="/about">About</a>
             
             @if(!auth()->check())
-            <a href="/login" class="nav-link ml-auto">Login</a>
-            <a href="/register" class="nav-link ml">Register</a>
+            <a href="/login" class="nav-link ml-auto">Connexion</a>
+            <a href="/register" class="nav-link ml">Inscription</a>
             @endif
 
             @if(auth()->check())
