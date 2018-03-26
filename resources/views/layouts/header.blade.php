@@ -10,7 +10,6 @@
             
             @if(!auth()->check())
             <a href="/login" class="nav-link ml-auto">Connexion</a>
-            <a href="/register" class="nav-link ml">Inscription</a>
             @endif
 
             @if(auth()->check())
@@ -18,7 +17,12 @@
                 {{ ucfirst(Auth::user()->name) }}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="/logout">Logout</a>
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('dropdown-item').submit();">Logout</a>
+                <form id="dropdown-item" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+              </form>
               </div>
             @endif
           
