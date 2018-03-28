@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route:get('child/create', 'ChildrenController@create');
+Route::get('child/create', 'ChildrenController@create');
 
 Auth::routes();
 

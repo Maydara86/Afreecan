@@ -3,7 +3,7 @@
         <div class="container">
           <nav class="nav">
             <a class="nav-link active" href="/">Home</a>
-            <a class="nav-link" href="/post/create">Add a Child</a>
+            <a class="nav-link" href="/child/create">Add a Child</a>
             <a class="nav-link" href="#">Press</a>
             <a class="nav-link" href="#">New hires</a>
             <a class="nav-link" href="/about">About</a>
