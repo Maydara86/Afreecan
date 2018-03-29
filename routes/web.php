@@ -13,10 +13,12 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
-Route::get('child/create', 'ChildrenController@create');
+Route::get('/child/create', 'ChildrenController@create');
+
+Route::post('/child', 'ChildrenController@store');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');

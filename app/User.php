@@ -26,4 +26,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function child()
+    {
+        return $this->hasMany(Child::class);
+    }
+
+    public function addChild(Child $child)
+    {
+        $this->child()->save($child);
+    }
 }

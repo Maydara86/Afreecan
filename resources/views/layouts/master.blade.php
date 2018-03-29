@@ -31,13 +31,11 @@
 
         </div>
             
-        @include('layouts.sidebar')
 
       </div>
 
     </div>
 
-    @include('layouts.footer')
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

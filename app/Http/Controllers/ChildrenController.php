@@ -35,7 +35,39 @@ class ChildrenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'first_name' => 'required|min:3|max:255',
+            'last_name' => 'required|min:3|max:255',
+            'gender' => '',
+            'birth_date' => 'required',
+            'grade' => '',
+            'school' => 'required|max:255',
+            'city' => 'required|max:255',
+            'height' => '',
+            'shoe_size' => '',
+            'siblings' => '',
+            'anomaly' => '',
+            'guardian_number' => '',
+            'other' => 'max:255'
+        ]);
+
+        auth()->user()->addChild(new Child(request([
+        'first_name',
+        'last_name',
+        'gender',
+        'birth_date',
+        'grade',
+        'school',
+        'city',
+        'height',
+        'shoe_size',
+        'siblings',
+        'anomaly',
+        'guardian_number',
+        'other'
+        ])));
+
+        return redirect()->home();
     }
 
     /**
