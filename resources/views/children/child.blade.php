@@ -14,5 +14,19 @@
         <p><strong>Tuteur:</strong> {{$child->guardian_number}}&nbsp;&nbsp;</p>
         <p><strong>Autre:</strong> {{$child->other}}&nbsp;&nbsp;</p>
     </div>
+    <form method="POST" action="/child/{{ $child->id }}">
+
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    
+        <div class="form-group">
+            <label for="exampleInputparrain"><strong>Affecter à un Parrain</strong></label>
+            <input type="text" class="form-control" id="exampleInputparrain" placeholder="Parrain id" name="godparent" >
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Affecter</button>
+        </div>
+    </form>
 </div>
 <hr>

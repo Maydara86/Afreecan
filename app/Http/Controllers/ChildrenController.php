@@ -14,9 +14,7 @@ class ChildrenController extends Controller
      */
     public function index()
     {
-        // $children = Child::orderBy('id', 'desc')->get();
-        // $children = $children->paginate(50);
-        $children = Child::paginate(50);
+        $children = Child::orderBy('id', 'desc')->paginate(50);
         return view('welcome', compact('children'));
     }
 
@@ -116,5 +114,23 @@ class ChildrenController extends Controller
     public function destroy(Child $child)
     {
         //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Child  $child
+     * @return \Illuminate\Http\Response
+     */
+    public function addGodparent(Request $request)
+    {
+        $child = Child::find($request->id);
+        $this->validate(request(), [
+            'godparent' => 'required|integer',
+        ]);
+        $child->user_id = $request->godparent;
+        $child->save();
+        return redirect('/');
     }
 }

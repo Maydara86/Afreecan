@@ -17,6 +17,8 @@ Route::get('/child/create', 'ChildrenController@create');
 
 Route::post('/child', 'ChildrenController@store');
 
+Route::put('/child/{id}', 'ChildrenController@addGodparent');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
