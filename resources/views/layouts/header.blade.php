@@ -3,7 +3,7 @@
         <div class="container">
           <nav class="nav">
             <a class="nav-link active" href="/">Home</a>
-            @if(auth()->check())
+            @if(auth()->check() && auth()->user()->email === 'admin_mohican@parrainagetunisie.org')
             <a class="nav-link" href="/child/create">Add a Child</a>
             @endif
             <a class="nav-link" href="#">Press</a>

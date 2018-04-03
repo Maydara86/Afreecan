@@ -1,18 +1,15 @@
 @extends('layouts.master')
 
-@if(auth()->check())
-@section('content')
+@if(auth()->check() && auth()->user()->email === 'admin_mohican@parrainagetunisie.org')
+    @section('content')
 
-@foreach($children as $child)
+        @foreach($children as $child)
 
-        @include('children.child')
+            @include('children.child')
+                
+        @endforeach
+
+        {{ $children->links() }}
         
-    @endforeach
-
-    <nav class="blog-pagination">
-        <a class="btn btn-outline-primary" href="#">Older</a>
-        <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
-    </nav>
-
-@endsection
+    @endsection
 @endif

@@ -14,7 +14,9 @@ class ChildrenController extends Controller
      */
     public function index()
     {
-        $children = Child::orderBy('id', 'desc')->get();
+        // $children = Child::orderBy('id', 'desc')->get();
+        // $children = $children->paginate(50);
+        $children = Child::paginate(50);
         return view('welcome', compact('children'));
     }
 
