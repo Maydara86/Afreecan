@@ -133,4 +133,12 @@ class ChildrenController extends Controller
         $child->save();
         return redirect('/');
     }
+
+    public function revokeGodparent(Request $request)
+    {
+        $child = Child::find($request->id);
+        $child->user_id = 1;
+        $child->save();
+        return redirect('/');
+    }
 }

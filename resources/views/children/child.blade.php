@@ -14,19 +14,32 @@
         <p><strong>Tuteur:</strong> {{$child->guardian_number}}&nbsp;&nbsp;</p>
         <p><strong>Autre:</strong> {{$child->other}}&nbsp;&nbsp;</p>
     </div>
-    <form method="POST" action="/child/{{ $child->id }}">
 
-        <input type="hidden" name="_method" value="PUT">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    
-        <div class="form-group">
-            <label for="exampleInputparrain"><strong>Affecter à un Parrain</strong></label>
-            <input type="text" class="form-control" id="exampleInputparrain" placeholder="Parrain id" name="godparent" >
-        </div>
+    @if($child->user_id === 1)
+        <form method="POST" action="/child/{{ $child->id }}">
+
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
         
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Affecter</button>
-        </div>
-    </form>
+            <div class="form-inline">
+                <label for="exampleInputparrain"><strong>Affecter à un Parrain</strong></label>
+                <input type="text" class="form-control ml-2" id="exampleInputparrain" placeholder="Parrain id" name="godparent" required>
+            
+                <button type="submit" class="btn btn-primary ml-2">Affecter</button>
+            </div>
+        </form>
+    @else           
+        <form method="POST" action="/child/revoke-godparent/{{ $child->id }}">
+
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        
+            <div class="form-inline">
+                <strong>Parrain:</strong> {{$child->user->name}}
+            
+                <button type="submit" class="btn btn-danger ml-2">Désaffecter</button>
+            </div>
+        </form>
+    @endif
 </div>
 <hr>
