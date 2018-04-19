@@ -21,6 +21,10 @@ Route::put('/child/{id}', 'ChildrenController@addGodparent');
 
 Route::put('/child/revoke-godparent/{id}', 'ChildrenController@revokeGodparent');
 
+Route::get('/child/edit/{id}', 'ChildrenController@edit');
+
+Route::put('/child/edit/{id}', 'ChildrenController@update');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

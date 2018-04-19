@@ -88,9 +88,10 @@ class ChildrenController extends Controller
      * @param  \App\Child  $child
      * @return \Illuminate\Http\Response
      */
-    public function edit(Child $child)
+    public function edit($id)
     {
-        //
+        $child = Child::find($id);
+        return view('children.edit', ['child' => $child]);
     }
 
     /**
@@ -100,9 +101,41 @@ class ChildrenController extends Controller
      * @param  \App\Child  $child
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Child $child)
+    public function update(Request $request, Child $child, $id)
     {
-        //
+        $child = Child::find($id);
+        $this->validate(request(), [
+            'first_name' => 'required|min:3|max:255',
+            'last_name' => 'required|min:3|max:255',
+            'gender' => '',
+            'birth_date' => 'required',
+            'grade' => '',
+            'school' => 'required|max:255',
+            'city' => 'required|max:255',
+            'height' => '',
+            'shoe_size' => '',
+            'siblings' => '',
+            'anomaly' => '',
+            'guardian_number' => '',
+            'other' => 'max:255'
+        ]);
+        auth()->user()->addChild(new Child(request([
+            'first_name',
+            'last_name',
+            'gender',
+            'birth_date',
+            'grade',
+            'school',
+            'city',
+            'height',
+            'shoe_size',
+            'siblings',
+            'anomaly',
+            'guardian_number',
+            'other'
+            ])));
+
+        return redirect()->home();
     }
 
     /**
